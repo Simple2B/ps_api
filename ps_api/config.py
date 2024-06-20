@@ -20,10 +20,18 @@ class Config(BaseSettings):
     VERSION: str = get_poetry_value("version")
 
     SECRET_KEY: str = "api_super_secret_key"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     BASE_DIR: str = BASE_DIR
 
     STATIC_DIR: str = os.path.join(BASE_DIR, "ps_api", "static")
     APP_PORT: int = 8080
+
+    # Database
+    MONGO_DB: str = "db"
+    MONGO_USERNAME: str = "user"
+    MONGO_PASSWORD: str = "pass"
+    MONGO_HOST: str = "mongo"
+    MONGO_PORT: int = 27017
 
     model_config = SettingsConfigDict(
         extra="allow",

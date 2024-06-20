@@ -1,3 +1,14 @@
 {
-  "cSpell.words": ["fastapi", "Pydantic"]
+  "cSpell.words": [
+    "bson",
+    "dotenv",
+    "fastapi",
+    "mongomock",
+    "passlib",
+    "Pydantic",
+    "pymongo"
+  ],
+  "python.testing.pytestArgs": ["test"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true
 }

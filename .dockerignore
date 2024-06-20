@@ -1,0 +1,10 @@
+/.git/
+/.venv/
+/.mypy_cache/
+/.vscode/
+/test/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db

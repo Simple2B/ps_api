@@ -1,6 +1,6 @@
 FROM python:3.12
 
-ARG APP_PORT=8080
+ARG APP_PORT=80
 
 # Add user app
 RUN python -m pip install -U pip
@@ -29,7 +29,6 @@ COPY --chown=app:app poetry.toml .
 
 
 RUN poetry install --only main -n --no-ansi
-RUN poetry add uvicorn
 
 COPY --chown=app:app . .
 

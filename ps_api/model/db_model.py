@@ -31,10 +31,6 @@ PydanticObjectId = Annotated[ObjectId, _ObjectIdPydanticAnnotation]
 
 
 class DbModel(BaseModel):
-    id: PydanticObjectId = Field(alias="_id")
+    id: PydanticObjectId | None = Field(alias="_id", default=None)
 
-    model_config = ConfigDict(
-        allow_population_by_field_name=True,
-        arbitrary_types_allowed=True,
-        json_encoders={ObjectId: lambda v: str(v)},
-    )
+    model_config = ConfigDict(populate_by_name=True)

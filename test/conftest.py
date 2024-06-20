@@ -31,7 +31,7 @@ def db(test_data: TestData) -> Generator[Database, None, None]:
         # u.password_hash = c.make_hash(u.password)
         # db.users.insert_one(u.dict(exclude={"password": True}))
         db_user = m.User(username=u.username, email=u.email, password_hash=c.make_hash(u.password))
-        db.users.insert_one(db_user.model_dump())
+        db.users.insert_one(db_user.model_dump(exclude_none=True))
 
     def override_get_db() -> Generator[Database, None, None]:
         yield db

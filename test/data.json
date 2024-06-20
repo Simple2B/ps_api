@@ -15,11 +15,5 @@
       "email": "testemail3@gmail.com",
       "password": "1234"
     }
-  ],
-
-  "test_user": {
-    "email": "test@gmail.com",
-    "username": "test_username",
-    "password": "test_password"
-  }
+  ]
 }

@@ -14,12 +14,55 @@ def test_login(client: TestClient, db: Database, test_data: TestData):
     )
     response = client.post(
         "api/auth/login",
-        auth_data.model_dump(),
+        data=auth_data.model_dump(),
     )
     assert response and response.status_code == 200, "unexpected response"
+    token = s.Token.model_validate(response.json())
+    assert token and token.token_type == "Bearer"
+    assert token.access_token
+
+    # login by email and password
+    auth_data = s.UserLogin(
+        username=test_data.test_users[1].email,
+        password=test_data.test_users[1].password,
+    )
+    response = client.post(
+        "api/auth/login",
+        data=auth_data.model_dump(),
+    )
+    assert response and response.status_code == 200, "unexpected response"
+    token = s.Token.model_validate(response.json())
+    assert token and token.token_type == "Bearer"
+    assert token.access_token
+
+    # login with invalid credentials
+    auth_data = s.UserLogin(username="invalid", password="invalid")
+    response = client.post(
+        "api/auth/login",
+        data=auth_data.model_dump(),
+    )
+    assert response and response.status_code == 403, "unexpected response"
+    assert response.json() == {"detail": "Invalid credentials"}
 
 
-def test_signup(client: TestClient, db: Database, test_data: TestData):
-    response = client.post("api/auth/sign-up", json=test_data.test_user.dict())
+def test_registration(client: TestClient, db: Database):
+    TEST_USERNAME = "test"
+    TEST_EMAIL = "some_email.simple2b@gamil.com"
+    TEST_PASSWORD = "password1345"
+    new_user = s.CreateUser(username=TEST_USERNAME, email=TEST_EMAIL, password=TEST_PASSWORD)
+    response = client.post("api/auth/register", json=new_user.model_dump())
     assert response and response.status_code == 201
-    assert db.users.find_one({"email": test_data.test_user.email})
+
+    user = s.User.model_validate(response.json())
+    assert user and user.username == TEST_USERNAME
+    assert user.email == TEST_EMAIL
+
+    # check login
+    auth_data = s.UserLogin(username=TEST_USERNAME, password=TEST_PASSWORD)
+    response = client.post(
+        "api/auth/login",
+        data=auth_data.model_dump(),
+    )
+    assert response and response.status_code == 200, "unexpected response"
+    token = s.Token.model_validate(response.json())
+    assert token and token.token_type == "Bearer"

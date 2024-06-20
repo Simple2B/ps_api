@@ -14,6 +14,4 @@ mongo = MongoClient(
 
 
 def get_db() -> Generator[Database, None, None]:
-    # TODO: begin transaction
     yield mongo[CFG.MONGO_DB]
-    # TODO: end transaction

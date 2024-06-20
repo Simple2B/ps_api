@@ -1,2 +1,10 @@
-# ps_api
-FastAPI, MongoDB, Docker, Python
+# Project S - API
+
+Project tech stack:
+
+- Docker
+- Python
+- FastAPI
+- Poetry
+- Pydantic
+- MongoDB

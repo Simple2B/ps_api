@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "ps-api"
+version = "0.1.0"
+description = "Project S. API"
+authors = ["Simple2B <info.simple2b@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.4.9"
+mypy = "^1.10.0"
+pytest = "^8.2.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_missing_imports = true
+exclude = [
+    "^mypy_cache/",
+    "^.pytest_cache/",
+    "^.ruff_cache/",
+    "^.venv/",
+    "^.vscode/",
+    "^__pypackages__/",
+]
+
+[tool.ruff]
+exclude = [
+    "__pypackages__",
+    "__pycache__",
+    ".eggs",
+    ".git",
+    ".github",
+    ".pytest_cache",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    ".vscode",
+]
+line-length = 120
+indent-width = 4

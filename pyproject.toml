@@ -62,4 +62,5 @@ indent-width = 4
 filterwarnings = [
     "ignore:.*pkg_resources.*:DeprecationWarning",
     "ignore:.*crypt.*:DeprecationWarning",
+    "ignore:.*UTC.*:DeprecationWarning",
 ]

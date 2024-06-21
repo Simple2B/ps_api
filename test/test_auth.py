@@ -60,8 +60,8 @@ def test_registration(client: TestClient, db: Database):
     # check login
     auth_data = s.UserLogin(username=TEST_USERNAME, password=TEST_PASSWORD)
     response = client.post(
-        "api/auth/login",
-        data=auth_data.model_dump(),
+        "api/auth/token",
+        json=auth_data.model_dump(),
     )
     assert response and response.status_code == 200, "unexpected response"
     token = s.Token.model_validate(response.json())

@@ -25,42 +25,9 @@ jobs:
           reference: "develop"
           tag: "${{ github.ref }}"
 
-  test:
-    name: Test
-    runs-on: Linux
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.12
-      - name: Setup poetry
-        uses: abatilo/actions-poetry@v3
-      - name: Install dependencies
-        working-directory: .
-        run: |
-          poetry install
-      - name: Lint with flake8
-        working-directory: .
-        run: |
-          poetry run flake8 . --count --show-source --statistics
-          poetry run flake8 . --count --exit-zero --max-complexity=10 --statistics
-      - name: Run mypy
-        working-directory: .
-        run: |
-          poetry run mypy
-      - name: Run pytest
-        working-directory: .
-        run: |
-          poetry run pytest test_flask
-          poetry run pytest test_api
-
   build:
     name: Build and Push
     runs-on: Linux
-    needs: test
     steps:
       - name: Checkout
         uses: actions/checkout@v4

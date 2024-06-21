@@ -4,6 +4,7 @@
     "dotenv",
     "fastapi",
     "mongomock",
+    "openai",
     "passlib",
     "Pydantic",
     "pymongo"

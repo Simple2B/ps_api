@@ -12,3 +12,11 @@ def whoami(
     user: m.User = Depends(c.get_current_user),
 ):
     return user
+
+
+@user_router.get("/greeting", response_model=s.Greeting)
+def greeting(
+    user: m.User = Depends(c.get_current_user),
+):
+    greeting_message = c.generate_greeting(user.username)
+    return s.Greeting(message=greeting_message)

@@ -9,3 +9,7 @@ class User(BaseModel):
 class CreateUser(User):
     password: str
 
+
+class Greeting(BaseModel):
+    message: str
+

@@ -16,7 +16,7 @@ def get_poetry_value(name: str) -> str:
 class Config(BaseSettings):
     """Configuration."""
 
-    APP_NAME: str = get_poetry_value("name")
+    APP_NAME: str = "Project S"
     VERSION: str = get_poetry_value("version")
 
     SECRET_KEY: str = "api_super_secret_key"
@@ -32,6 +32,9 @@ class Config(BaseSettings):
     MONGO_PASSWORD: str = "pass"
     MONGO_HOST: str = "mongo"
     MONGO_PORT: int = 27017
+
+    # OpenAI
+    OPENAI_API_KEY: str = "your-api"
 
     model_config = SettingsConfigDict(
         extra="allow",

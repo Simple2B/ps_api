@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ps-api"
-version = "1.0.2"
+version = "1.0.3"
 description = "Project S. API"
 authors = ["Simple2B <info.simple2b@gmail.com>"]
 license = "MIT"

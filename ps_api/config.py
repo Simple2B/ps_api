@@ -27,7 +27,7 @@ class Config(BaseSettings):
     APP_PORT: int = 8080
 
     # Database
-    # MONGO_DB: str = "db"
+    MONGO_DB: str = "db"
     # MONGO_USERNAME: str = "user"
     # MONGO_PASSWORD: str = "pass"
     # MONGO_HOST: str = "mongo"

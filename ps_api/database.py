@@ -5,12 +5,7 @@ from pymongo.database import Database
 
 from ps_api.config import CFG
 
-mongo = MongoClient(
-    host=CFG.MONGO_HOST,
-    port=CFG.MONGO_PORT,
-    username=CFG.MONGO_USERNAME,
-    password=CFG.MONGO_PASSWORD,
-)
+mongo = MongoClient(CFG.MONGO_URI)
 
 
 def get_db() -> Generator[Database, None, None]:

@@ -27,11 +27,12 @@ class Config(BaseSettings):
     APP_PORT: int = 8080
 
     # Database
-    MONGO_DB: str = "db"
-    MONGO_USERNAME: str = "user"
-    MONGO_PASSWORD: str = "pass"
-    MONGO_HOST: str = "mongo"
-    MONGO_PORT: int = 27017
+    # MONGO_DB: str = "db"
+    # MONGO_USERNAME: str = "user"
+    # MONGO_PASSWORD: str = "pass"
+    # MONGO_HOST: str = "mongo"
+    # MONGO_PORT: int = 27017
+    MONGO_URI: str = "mongodb://user:pass@mongo:27017/db"
 
     # OpenAI
     OPENAI_API_KEY: str = "your-api"

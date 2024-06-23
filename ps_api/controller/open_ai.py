@@ -2,7 +2,6 @@ from openai import OpenAI
 
 from ps_api.config import CFG
 
-# Вкажіть свій OpenAI API ключ
 client = OpenAI(
     # This is the default and can be omitted
     api_key=CFG.OPENAI_API_KEY,
